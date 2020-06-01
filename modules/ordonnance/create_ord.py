@@ -6,7 +6,7 @@ def write(string, ord_file):
 
 
 def create_ord(id, firstname, lastname, date, time, medecines, i):
-  with open(f'files/ordonnance/{firstname}_{lastname}--{i}.txt', 'w') as ord_file:
+  with open(f'files/ordonnance/{firstname}_{lastname}_{i}.txt', 'w') as ord_file:
     headline = f'{id} {firstname} {lastname} {date} {time}'
     write(headline, ord_file)
 
