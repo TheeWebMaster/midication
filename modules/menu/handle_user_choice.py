@@ -1,6 +1,8 @@
 import modules.patient as patient
 import modules.rendez_vous as rendezvous
 import modules.ordonnance as ordo
+import modules.historique as history
+import modules.graph as graph
 
 def add_new_patient():
   ids = input('CIN: ')
@@ -18,10 +20,10 @@ def add_new_patient():
       'age': age
     }
     patient.add_patient(new_patient)
-    print('done')
+    print('\033[92mdone.\033[0m')
 
   else:
-    print('wrong input(s)') 
+    print('\033[91mwrong input(s).\033[0m') 
 
 
 def delete_patient():
@@ -29,7 +31,7 @@ def delete_patient():
   if (ids.isdigit()):
     patient.remove_patient(ids)
   else:
-    print('wrong CIN')
+    print('\033[91mwrong CIN.\033[0m')
 
 def is_valid_date(date):
   parts = date.split('/')
@@ -63,8 +65,9 @@ def add_rendezvous():
       'date': date,
       'time': time
     })
+    print('\033[92mdone.\033[0m')
   else:
-    print('wrong input(s)')
+    print('\033[91mwrong input(s).\033[0m')
 
 
 def cancel_rendezvous():
@@ -81,7 +84,7 @@ def modify_rendezvoud():
   if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
     rendezvous.modify_rendezvous(ids, {'date': date, 'time': time})
   else:
-    print('wrong input(s)')
+    print('\033[91mwrong input(s).\033[0m')
     
 def get_medicines():
   med = []
@@ -110,7 +113,10 @@ def create_ord():
   medicines = get_medicines()
 
   if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
-    ordo.create_ord(ids, firstname, lastname, date,time, medicines,1)
+    ordo.create_ord(ids, firstname, lastname, date, time, medicines, 1)
+    print('\033[92mdone.\033[0m')
+  else:
+    print('\033[91mwrong input(s).\033[0m')
 
 
 def handle_user_choice(choice):
@@ -127,3 +133,13 @@ def handle_user_choice(choice):
       modify_rendezvoud()
     elif(choice == '6'):
       create_ord()
+    elif(choice == '7'):
+      history.create_history_files()
+    elif(choice == '8'):
+      graph.per_month()
+    elif(choice == '9'):
+      graph.per_year()
+    else:
+      print('\033[91mwrong choice.\033[0m')
+  else:
+    print('\033[91mwrong choice.\033[0m')

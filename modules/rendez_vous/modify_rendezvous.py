@@ -31,6 +31,7 @@ def modify_rendezvous(patient_id, timing):
     rdv_file.seek(0)
 
     rdv_file.writelines(rdvs)
+    print('\033[92mdone.\033[0m')
   else:
     print('not found')
 

@@ -19,6 +19,7 @@ def cancel_rendezvous(patient_id):
     rdv_file.seek(0)
 
     rdv_file.writelines(filterd_rdvs)
+    print('\033[92mdone.\033[0m')
   else:
     print(f'rendezvous with ID {patient_id} already not registered')
 

@@ -8,7 +8,7 @@ def show():
   print('*   4. annuler un rendez-vous                                            *')
   print('*   5. modifier un rendez-vous                                           *')
   print('*   6. cree une ordonnance                                               *')
-  print('*   7. generer les historique des patients existants                     *')
+  print('*   7. generer les historique des rendezvous des patients                *')
   print('*   8. tracer la courbe de nombre des consultations pour chaque mois.    *')
   print('*   9. tracer la courbe de nombre des consultations pour chaque année.   *')
   print('*   0. quitter                                                           *')
