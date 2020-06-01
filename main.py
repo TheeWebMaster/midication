@@ -2,7 +2,6 @@ import modules.patient as patient
 import modules.rendez_vous as rendezvous
 import modules.ordonnance as ordo
 import modules.historique as historique
-import modules.graph as graph
 import modules.menu as menu
 
 patient.create_patient_file()
