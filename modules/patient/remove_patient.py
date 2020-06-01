@@ -1,5 +1,12 @@
 def filter_patients(patient_id, patients):
-  return [patient for patient in patients if patient_id not in patient]
+  new_patients = []
+
+  for patient in patients:
+    if patient_id != patient.split(';')[0]:
+      new_patients.append(patient)
+
+  return new_patients
+
 
 
 def remove_patient(patient_id):
@@ -8,8 +15,12 @@ def remove_patient(patient_id):
 
   filtered = filter_patients(patient_id, patients)
 
-  patient_file.truncate(0)
-  patient_file.seek(0)
+  if (len(filtered) != len(patients)):
+    patient_file.truncate(0)
+    patient_file.seek(0)
 
-  patient_file.writelines(filtered)
+    patient_file.writelines(filtered)
+  else:
+    print(f'patient with ID {patient_id} already not registered')
+
   patient_file.close()
