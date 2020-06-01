@@ -8,7 +8,7 @@ def done():
   print('\ndone.')
 
 
-def wrong():
+def wrong_inputs():
   pint('\nwrong input(s).')
 
 def add_new_patient():
@@ -30,7 +30,7 @@ def add_new_patient():
     done()
 
   else:
-    wrong() 
+    wrong_inputs() 
 
 
 def delete_patient():
@@ -74,7 +74,7 @@ def add_rendezvous():
     })
     done()
   else:
-    wrong()
+    wrong_inputs()
 
 
 def cancel_rendezvous():
@@ -91,7 +91,7 @@ def modify_rendezvoud():
   if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
     rendezvous.modify_rendezvous(ids, {'date': date, 'time': time})
   else:
-    wrong()
+    wrong_inputs()
     
 def get_medicines():
   med = []
@@ -123,7 +123,7 @@ def create_ord():
     ordo.create_ord(ids, firstname, lastname, date, time, medicines, 1)
     done()
   else:
-    wrong()
+    wrong_inputs()
 
 
 def handle_user_choice(choice):

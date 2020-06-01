@@ -9,13 +9,12 @@ def getIndex(rdvs, patient_id):
 def replace_rdv(rdvs, patient_id, timing):
   index = getIndex(rdvs, patient_id)
 
-  if (index == False and index != 0):
-    print('desired rendezvous to update not found.')
-    return False
-
-  else:
+  if (index >= 0 and index != False) :
     rdvs[index] = '{};{};{};\n'.format(patient_id, timing['date'], timing['time'])
     return True
+  else:
+    print('desired rendezvous to update not found.')
+    return False
 
 
 
