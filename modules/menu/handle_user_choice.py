@@ -13,10 +13,11 @@ def wrong_inputs():
 
 
 def is_valid_date(date):
-parts = date.split('/')
-if (len(parts) != 3):
-  return False
-else:
+  parts = date.split('/')
+  
+  if (len(parts) != 3):
+    return False
+  else:
     if (parts[0].isdigit() and parts[1].isdigit() and parts[2].isdigit()):
       return True
     else:
