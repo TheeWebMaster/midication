@@ -30,7 +30,5 @@ def modify_rendezvous(patient_id, timing):
 
     rdv_file.writelines(rdvs)
     print('done.')
-  else:
-    print('not found')
 
   rdv_file.close()
