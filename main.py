@@ -17,6 +17,7 @@ ordo.generate_rand_ords()
 historique.clear_prev_history_files()
 historique.create_history_files()
 
+print('\n\n')
 print('patients, rendervous, ordonnances, historique data has been generated automatically for testing')
 print('you can graph data directly or add, remove, update disired data')
 print('please check the files/ folder')

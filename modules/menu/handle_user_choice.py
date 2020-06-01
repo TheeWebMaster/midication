@@ -4,6 +4,13 @@ import modules.ordonnance as ordo
 import modules.historique as history
 import modules.graph as graph
 
+def done():
+  print('\ndone.')
+
+
+def wrong():
+  pint('\nwrong input(s).')
+
 def add_new_patient():
   ids = input('CIN: ')
   firstname = input('nom: ')
@@ -20,10 +27,10 @@ def add_new_patient():
       'age': age
     }
     patient.add_patient(new_patient)
-    print('done.')
+    done()
 
   else:
-    print('wrong input(s).') 
+    wrong() 
 
 
 def delete_patient():
@@ -65,9 +72,9 @@ def add_rendezvous():
       'date': date,
       'time': time
     })
-    print('done.')
+    done()
   else:
-    print('wrong input(s).')
+    wrong()
 
 
 def cancel_rendezvous():
@@ -84,7 +91,7 @@ def modify_rendezvoud():
   if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
     rendezvous.modify_rendezvous(ids, {'date': date, 'time': time})
   else:
-    print('wrong input(s).')
+    wrong()
     
 def get_medicines():
   med = []
@@ -114,9 +121,9 @@ def create_ord():
 
   if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
     ordo.create_ord(ids, firstname, lastname, date, time, medicines, 1)
-    print('done.')
+    done()
   else:
-    print('wrong input(s).')
+    wrong()
 
 
 def handle_user_choice(choice):
@@ -135,6 +142,7 @@ def handle_user_choice(choice):
       create_ord()
     elif(choice == '7'):
       history.create_history_files()
+      done()
     elif(choice == '8'):
       graph.per_month()
     elif(choice == '9'):
