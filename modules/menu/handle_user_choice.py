@@ -9,7 +9,47 @@ def done():
 
 
 def wrong_inputs():
-  pint('\nwrong input(s).')
+  print('\nwrong input(s).')
+
+
+def is_valid_date(date):
+parts = date.split('/')
+if (len(parts) != 3):
+  return False
+else:
+    if (parts[0].isdigit() and parts[1].isdigit() and parts[2].isdigit()):
+      return True
+    else:
+      return False
+
+
+def is_valid_time(time):
+  parts = time.split(':')
+
+  if (len(parts) != 2):
+    return False
+  else:
+    if (parts[0].isdigit() and parts[1].isdigit()):
+      return True
+    else:
+      return False
+
+
+def get_medicines():
+  med = []
+  num = ''
+  while not num.isdigit():
+    num = input('enter le nombre des medicaments: ')
+  
+  for _  in range(0, int(num)):
+    med.append({
+      'title': input('nom du medicament: '),
+      'quantity': input('quantite du medicament: '),
+      'duration': input('duration du medicament: ')
+    })
+
+  return med
+
 
 def add_new_patient():
   ids = input('CIN: ')
@@ -40,26 +80,6 @@ def delete_patient():
   else:
     print('wrong CIN.')
 
-def is_valid_date(date):
-  parts = date.split('/')
-  if (len(parts) != 3):
-    return False
-  else:
-      if (parts[0].isdigit() and parts[1].isdigit() and parts[2].isdigit()):
-        return True
-      else:
-        return False
-
-def is_valid_time(time):
-  parts = time.split(':')
-
-  if (len(parts) != 2):
-    return False
-  else:
-    if (parts[0].isdigit() and parts[1].isdigit()):
-      return True
-    else:
-      return False
 
 def add_rendezvous():
   ids = input('CIN: ')
@@ -82,6 +102,8 @@ def cancel_rendezvous():
 
   if (ids.isdigit()):
     rendezvous.cancel_rendezvous(ids)
+  else:
+    print('wrong CIN')
 
 def modify_rendezvoud():
   ids = input('donner le CIN de rendezvous a modifier: ')
@@ -93,22 +115,6 @@ def modify_rendezvoud():
   else:
     wrong_inputs()
     
-def get_medicines():
-  med = []
-  num = ''
-  while not num.isdigit():
-    num = input('enter le nombre des medicaments: ')
-  
-  for _  in range(0, int(num)):
-    med.append({
-      'title': input('nom du medicament: '),
-      'quantity': input('quantite du medicament: '),
-      'duration': input('duration du medicament: ')
-    })
-
-  return med
-
-
 
 def create_ord():
   ids = input('CIN: ')
