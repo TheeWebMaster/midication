@@ -10,7 +10,7 @@ def get_rand_sexe():
 
 
 def generate_rand_patients():
-  for _ in range(140):
+  for _ in range(4):
     sexe = get_rand_sexe()
     patient = {
         'id': randint(5000, 6000),

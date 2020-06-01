@@ -12,13 +12,15 @@ def get_months(dates):
 def draw(monthNbr):
   x = [i for i in range(1, 13)]
   
-  plt.plot(x, monthNbr)
+  plt.plot(x, monthNbr, label='consultations/mois')
 
   plt.title('nombre des consultations pour chaque mois')
 
   plt.xlabel('mois')
   plt.ylabel('nombre des consultations')
 
+  plt.legend()
+  
   plt.show()
 
 def per_month():

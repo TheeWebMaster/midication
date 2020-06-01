@@ -10,10 +10,10 @@ patient.generate_rand_patients()
 rendezvous.create_rendezvous_file()
 rendezvous.generate_rand_rdvs()
 
-# ordo.remove_old_ord_files()
-# ordo.generate_rand_ords()
+ordo.remove_old_ord_files()
+ordo.generate_rand_ords()
 
-# historique.clear_prev_history_files()
-# historique.create_history_files()
+historique.clear_prev_history_files()
+historique.create_history_files()
 
-graph.per_year()
+graph.per_month()

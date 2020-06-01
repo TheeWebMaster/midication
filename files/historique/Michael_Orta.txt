@@ -1,9 +1,0 @@
-5523 Michael Orta 1/9/2017 12:43
-WEST 1 5day(s)
-PARTINGTON 2 8day(s)
-------------------------------
-5523 Michael Orta 1/8/2010 02:09
-HOWARD 3 6day(s)
-BATES 2 10day(s)
-SCOTT 2 3day(s)
-------------------------------

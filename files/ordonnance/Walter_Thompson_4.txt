@@ -1,6 +1,0 @@
-5800 Walter Thompson 1/9/2016 01:08
-HART 1 3day(s)
-MORELAND 2 1day(s)
-CHABEZ 1 7day(s)
-ECHOLS 2 2day(s)
-TODD 1 2day(s)

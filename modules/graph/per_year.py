@@ -18,7 +18,18 @@ def draw(year_mapping):
   
   times = [year_mapping[str(year)] for year in int_years]
 
-  plt.plot(int_years, times)
+  plt.plot(int_years, times, label='consultations/année')
+
+
+
+  plt.title('nombre des consultations pour chaque année')
+  plt.legend()
+
+  plt.xlabel('années')
+  plt.ylabel('nombre des consultations')
+
+  plt.legend()
+
   plt.show()
 
 def per_year():
