@@ -1,0 +1,21 @@
+5343 Joseph Aguirre 11/4/2011 20:10
+BEARDEN 2 4day(s)
+CHAMBERS 3 5day(s)
+------------------------------
+5343 Joseph Aguirre 29/12/2011 10:17
+HERNANDEZ 1 4day(s)
+------------------------------
+5343 Joseph Aguirre 17/6/2016 22:31
+BATES 3 3day(s)
+COONEY 2 2day(s)
+GLENN 2 9day(s)
+STROMME 1 5day(s)
+GOOD 2 1day(s)
+------------------------------
+5343 Joseph Aguirre 22/12/2017 02:19
+PASKETT 1 2day(s)
+SMITH 2 6day(s)
+MIRAMONTES 2 10day(s)
+ABRAMS 1 4day(s)
+QUINN 2 5day(s)
+------------------------------

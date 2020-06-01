@@ -3,7 +3,7 @@ from random import randint
 
 
 def get_rand_date():
-  return f'{randint(1, 31)}/{randint(1, 12)}/{randint(2019, 2020)}'
+  return f'{randint(1, 31)}/{randint(1, 12)}/{randint(2010, 2020)}'
 
 
 def get_rand_time():
@@ -16,7 +16,7 @@ def generate_rand_rdvs():
 
   for patient in patients:
     patient_id = patient.split(';')[0]
-    for _ in range(0, randint(0, 6)):
+    for _ in range(0, randint(1, 4)):
       add_rendezvous({
           'id': patient_id,
           'date': get_rand_date(),

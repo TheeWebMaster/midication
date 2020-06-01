@@ -1,0 +1,21 @@
+5997 Kim Severance 23/2/2015 13:38
+THOMAS 1 4day(s)
+SWALES 1 7day(s)
+HASS 1 10day(s)
+EARNEST 2 6day(s)
+FAISON 3 1day(s)
+------------------------------
+5997 Kim Severance 5/11/2018 10:29
+FULTON 2 4day(s)
+SNOW 3 4day(s)
+LINT 2 9day(s)
+LAT 2 3day(s)
+------------------------------
+5997 Kim Severance 2/12/2019 23:20
+UTECHT 2 4day(s)
+THOMPSON 2 3day(s)
+BUNN 1 9day(s)
+------------------------------
+5997 Kim Severance 16/9/2014 00:29
+BARBER 2 2day(s)
+------------------------------

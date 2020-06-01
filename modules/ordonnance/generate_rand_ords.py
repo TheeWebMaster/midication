@@ -32,7 +32,7 @@ def get_corresponding_patient_fullname(patient_id):
 
 
 def generate_rand_ords():
-  rdv_file = open('files/rendervous.txt', 'r')
+  rdv_file = open('files/rendezvous.txt', 'r')
   prev_latname = ''
 
   for rdv in rdv_file.readlines():
