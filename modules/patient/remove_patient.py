@@ -20,7 +20,7 @@ def remove_patient(patient_id):
     patient_file.seek(0)
 
     patient_file.writelines(filtered)
-    print('\033[92mdone.\033[0m')
+    print('done.')
   else:
     print(f'patient with ID {patient_id} already not registered')
 

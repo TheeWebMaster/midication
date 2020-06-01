@@ -20,10 +20,10 @@ def add_new_patient():
       'age': age
     }
     patient.add_patient(new_patient)
-    print('\033[92mdone.\033[0m')
+    print('done.')
 
   else:
-    print('\033[91mwrong input(s).\033[0m') 
+    print('wrong input(s).') 
 
 
 def delete_patient():
@@ -31,7 +31,7 @@ def delete_patient():
   if (ids.isdigit()):
     patient.remove_patient(ids)
   else:
-    print('\033[91mwrong CIN.\033[0m')
+    print('wrong CIN.')
 
 def is_valid_date(date):
   parts = date.split('/')
@@ -65,9 +65,9 @@ def add_rendezvous():
       'date': date,
       'time': time
     })
-    print('\033[92mdone.\033[0m')
+    print('done.')
   else:
-    print('\033[91mwrong input(s).\033[0m')
+    print('wrong input(s).')
 
 
 def cancel_rendezvous():
@@ -84,7 +84,7 @@ def modify_rendezvoud():
   if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
     rendezvous.modify_rendezvous(ids, {'date': date, 'time': time})
   else:
-    print('\033[91mwrong input(s).\033[0m')
+    print('wrong input(s).')
     
 def get_medicines():
   med = []
@@ -114,9 +114,9 @@ def create_ord():
 
   if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
     ordo.create_ord(ids, firstname, lastname, date, time, medicines, 1)
-    print('\033[92mdone.\033[0m')
+    print('done.')
   else:
-    print('\033[91mwrong input(s).\033[0m')
+    print('wrong input(s).')
 
 
 def handle_user_choice(choice):
@@ -140,6 +140,6 @@ def handle_user_choice(choice):
     elif(choice == '9'):
       graph.per_year()
     else:
-      print('\033[91mwrong choice.\033[0m')
+      print('wrong choice.')
   else:
-    print('\033[91mwrong choice.\033[0m')
+    print('wrong choice.')
