@@ -1,6 +1,5 @@
 def getIndex(rdvs, patient_id):
   for (index, rdv) in enumerate(rdvs):
-    print(rdv)
     if (patient_id == rdv.split(';')[0]):
       return index
 
@@ -31,7 +30,7 @@ def modify_rendezvous(patient_id, timing):
     rdv_file.seek(0)
 
     rdv_file.writelines(rdvs)
-    print('\033[92mdone.\033[0m')
+    print('done.')
   else:
     print('not found')
 
