@@ -1,4 +1,0 @@
-5899;Barbara;Brooks;female;99;
-5591;Jean;Mann;female;54;
-5316;Rigoberto;Haller;male;88;
-5458;Stephen;Hatcher;male;32;
