@@ -108,7 +108,7 @@ def add_rendezvous():
 
 def cancel_rendezvous():
   patient_id = input('donner le CIN de rendezvous a annule: ')
-  date = input('donner la date de rendezvous a annule: ')
+  date = input('donner la date de rendezvous a annule: jour/mois/annee ')
   time = input('donner l\'heure de rendezvous a annule: hh:min ')
 
 
@@ -119,11 +119,18 @@ def cancel_rendezvous():
 
 def modify_rendezvoud():
   patient_id = input('donner le CIN de rendezvous a modifier: ')
-  date = input('donner nouveau date jour/mois/annee: ')
-  time = input('donner nouveau temp h:min ')
+  prev_date = input('donner la date de rendezvous a annule: jour/mois/annee ')
+  prev_time = input('donner l\'heure de rendezvous a annule: hh:min ')
 
-  if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
-    rendezvous.modify_rendezvous(patient_id, {'date': date, 'time': time})
+  date = input('donner le nouveau date jour/mois/annee: ')
+  time = input('donner le nouveau temp hh:min ')
+
+  if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time) and is_valid_date(prev_date) and is_valid_time(prev_time)):
+    rendezvous.modify_rendezvous(
+      patient_id, 
+      {'date': date, 'time': time},
+      {'date': prev_date, 'time': prev_time}
+    )
   else:
     wrong_inputs()
     
