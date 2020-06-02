@@ -17,32 +17,18 @@ def get_rand_med():
   return medicines
 
 
-def extract_fullname(patient):
-  patient_detail = patient.split(';')
-
-  return patient_detail[1], patient_detail[2]
-
-
-def get_corresponding_patient_fullname(patient_id):
-  patient_file = open('files/patient.txt', 'r')
-
-  for patient in patient_file.readlines():
-    if (patient_id in patient):
-      return extract_fullname(patient)
-
-
 def generate_rand_ords():
   rdv_file = open('files/rendezvous.txt', 'r')
-  prev_latname = ''
+  prev_patient_id = ''
 
   for rdv in rdv_file.readlines():
     rdv_details = rdv.split(';')
-    firstname, lastname = get_corresponding_patient_fullname(rdv_details[0])
+    current_patient_id = rdv_details[0]
 
-    if(prev_latname != lastname):
+    if(prev_patient_id != current_patient_id):
       index = 1
 
-    create_ord(rdv_details[0], firstname, lastname, rdv_details[1], rdv_details[2], get_rand_med(), index)
+    create_ord(current_patient_id, rdv_details[1], rdv_details[2], get_rand_med(), index)
 
-    prev_latname = lastname
+    prev_patient_id = current_patient_id
     index += 1

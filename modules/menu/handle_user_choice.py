@@ -157,15 +157,13 @@ def modify_rendezvoud():
 
 def create_ord():
   patient_id = input('CIN: ')
-  firstname = input('nom: ')
-  lastname = input('prenom: ')
   date = input('date jour/mois/annee: ')
   time = input('temp hh:min ')
 
   medicines = get_medicines()
 
-  if(patient_id.isdigit()and firstname.isalpha() and lastname.isalpha() and is_valid_date(date) and is_valid_time(time)):
-    is_allgood = ordo.create_ord(patient_id, firstname, lastname, date, time, medicines, 1)
+  if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
+    is_allgood = ordo.create_ord(patient_id, date, time, medicines, 1)
     
     if (is_allgood):
       done()
