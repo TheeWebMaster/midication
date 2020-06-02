@@ -6,8 +6,10 @@ def write_tofile(string, ord_file):
 
 def is_patient(patient_id):
   patient_file = open('files/patient.txt', 'r')
+  patients = patient_file.readlines()
+  patient_file.close()
 
-  for patient in patient_file.readlines():
+  for patient in patients:
     if (patient_id == patient.split(';')[0]):
       return True
 
@@ -21,8 +23,10 @@ def extract_fullname(patient):
 
 def get_corresponding_patient_fullname(patient_id):
   patient_file = open('files/patient.txt', 'r')
+  patients = patient_file.readlines()
+  patient_file.close()
 
-  for patient in patient_file.readlines():
+  for patient in patients:
     if (patient_id == patient.split(';')[0]):
       return extract_fullname(patient)
 
