@@ -23,7 +23,7 @@ def get_corresponding_patient_fullname(patient_id):
   patient_file = open('files/patient.txt', 'r')
 
   for patient in patient_file.readlines():
-    if (patient_id in patient):
+    if (patient_id == patient.split(';')[0]):
       return extract_fullname(patient)
 
 
