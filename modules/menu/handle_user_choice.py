@@ -53,15 +53,15 @@ def get_medicines():
 
 
 def add_new_patient():
-  ids = input('CIN: ')
+  patient_id = input('CIN: ')
   firstname = input('nom: ')
   lastname = input('prenon: ')
   sexe = input('sexe: ')
   age = input('age: ')
 
-  if(ids.isdigit() and age.isdigit() and firstname.isalpha() and lastname.isalpha() and sexe.isalpha()):
+  if(patient_id.isdigit() and age.isdigit() and firstname.isalpha() and lastname.isalpha() and sexe.isalpha()):
     new_patient =  {
-      'id': ids,
+      'id': patient_id,
       'firstname': firstname,
       'lastname': lastname,
       'sexe': sexe,
@@ -75,50 +75,55 @@ def add_new_patient():
 
 
 def delete_patient():
-  ids = input('donner CIN de patient a supprimer: ')
-  if (ids.isdigit()):
-    patient.remove_patient(ids)
+  patient_id = input('donner CIN de patient a supprimer: ')
+  if (patient_id.isdigit()):
+    patient.remove_patient(patient_id)
   else:
     print('wrong CIN.')
 
 
 def add_rendezvous():
-  ids = input('CIN: ')
+  patient_id = input('CIN: ')
   date = input('date jour/mois/annee: ')
   time = input('temp h:min ')
 
-  if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
-    rendezvous.add_rendezvous({
-      'id': ids,
+  if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
+    allgood = rendezvous.add_rendezvous({
+      'id': patient_id,
       'date': date,
       'time': time
     })
-    done()
+
+    if (allgood):
+      done()
+    else:
+      print(f'\nthe patient with CIN {patient_id} does not exist in the patient registry')
+
   else:
     wrong_inputs()
 
 
 def cancel_rendezvous():
-  ids = input('donner le CIN de rendezvous a annule: ')
+  patient_id = input('donner le CIN de rendezvous a annule: ')
 
-  if (ids.isdigit()):
-    rendezvous.cancel_rendezvous(ids)
+  if (patient_id.isdigit()):
+    rendezvous.cancel_rendezvous(patient_id)
   else:
     print('wrong CIN')
 
 def modify_rendezvoud():
-  ids = input('donner le CIN de rendezvous a modifier: ')
+  patient_id = input('donner le CIN de rendezvous a modifier: ')
   date = input('donner nouveau date jour/mois/annee: ')
   time = input('donner nouveau temp h:min ')
 
-  if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
-    rendezvous.modify_rendezvous(ids, {'date': date, 'time': time})
+  if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
+    rendezvous.modify_rendezvous(patient_id, {'date': date, 'time': time})
   else:
     wrong_inputs()
     
 
 def create_ord():
-  ids = input('CIN: ')
+  patient_id = input('CIN: ')
   firstname = input('nom: ')
   lastname = input('prenom: ')
   date = input('date jour/mois/annee: ')
@@ -126,8 +131,8 @@ def create_ord():
 
   medicines = get_medicines()
 
-  if(ids.isdigit() and is_valid_date(date) and is_valid_time(time)):
-    ordo.create_ord(ids, firstname, lastname, date, time, medicines, 1)
+  if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
+    ordo.create_ord(patient_id, firstname, lastname, date, time, medicines, 1)
     done()
   else:
     wrong_inputs()
