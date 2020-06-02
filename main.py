@@ -15,11 +15,12 @@ ordo.remove_old_ord_files()
 ordo.generate_rand_ords()
 
 historique.create_history_folder()
+historique.clear_prev_history_files()
 historique.create_history_files()
 
 print('\n\n')
 print('patients, rendervous, ordonnances, historique data has been generated automatically for testing')
-print('you can graph data directly or add, remove, update disired data')
+print('you can graph data directly or add, remove, update desired data')
 print('please check the files/ folder')
 
 while(True):
