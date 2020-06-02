@@ -168,7 +168,7 @@ def create_ord():
     if (is_allgood):
       done()
     else:
-      print(f'\nno corresponding patient with CIN {patient_id}s')
+      print(f'\nno corresponding patient with CIN {patient_id}')
   else:
     wrong_inputs()
 
