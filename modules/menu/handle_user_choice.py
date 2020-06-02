@@ -108,9 +108,12 @@ def add_rendezvous():
 
 def cancel_rendezvous():
   patient_id = input('donner le CIN de rendezvous a annule: ')
+  date = input('donner la date de rendezvous a annule: ')
+  time = input('donner l\'heure de rendezvous a annule: ')
 
-  if (patient_id.isdigit()):
-    rendezvous.cancel_rendezvous(patient_id)
+
+  if (patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
+    rendezvous.cancel_rendezvous(patient_id, date, time)
   else:
     print('wrong CIN')
 
