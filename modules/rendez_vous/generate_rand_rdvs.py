@@ -16,9 +16,9 @@ def generate_rand_rdvs():
 
   for patient in patients:
     patient_id = patient.split(';')[0]
-    # for _ in range(0, randint(1, 4)):
-    add_rendezvous({
-        'id': patient_id,
-        'date': get_rand_date(),
-        'time': get_rand_time()
-    })
+    for _ in range(0, randint(1, 2)):
+      add_rendezvous({
+          'id': patient_id,
+          'date': get_rand_date(),
+          'time': get_rand_time()
+      })
