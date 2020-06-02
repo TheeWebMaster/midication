@@ -4,4 +4,4 @@ This project requires two packages `matplotlib` and `names`.
 
 - _THAN:_ execute `main.py` file as entry point. thank you.
 
-&copy; **yossri_mhamdi**
+_**&copy; yossri_mhamdi**_
