@@ -24,8 +24,9 @@ def modify_rendezvous(patient_id, new_timing, prev_timing):
     rdv_file.seek(0)
 
     rdv_file.writelines(rdvs)
-    print('\ndone.')
+    
+    return True
   else:
-    print('\ndesired rendezvous to update not found.')
+    return False
 
   rdv_file.close()

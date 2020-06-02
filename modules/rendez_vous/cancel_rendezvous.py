@@ -12,8 +12,8 @@ def cancel_rendezvous(patient_id, date, time):
     rdv_file.seek(0)
 
     rdv_file.writelines(filterd_rdvs)
-    print('\ndone.')
+    
+    return True
   else:
-    print(f'\nrendezvous with ID {patient_id} date {date} time {time} already not registered')
-
+    return False
   rdv_file.close()
