@@ -24,6 +24,7 @@ print('please check the files/ folder')
 while(True):
   menu.show()
   choice = input('please, choose an option: ')
+  print('\n')
   if (choice == '0'):
     break
   menu.handle_user_choice(choice)

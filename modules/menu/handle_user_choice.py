@@ -36,6 +36,9 @@ def is_valid_time(time):
       return False
 
 
+def patient_404(patient_id):
+  print(f'\nthe patient with CIN {patient_id} does not exist in the patient registry')
+
 def get_medicines():
   med = []
   num = ''
@@ -97,7 +100,7 @@ def add_rendezvous():
     if (allgood):
       done()
     else:
-      print(f'\nthe patient with CIN {patient_id} does not exist in the patient registry')
+      patient_404(patient_id)
 
   else:
     wrong_inputs()
@@ -132,8 +135,12 @@ def create_ord():
   medicines = get_medicines()
 
   if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
-    ordo.create_ord(patient_id, firstname, lastname, date, time, medicines, 1)
-    done()
+    is_allgood = ordo.create_ord(patient_id, firstname, lastname, date, time, medicines, 1)
+    
+    if (is_allgood):
+      done()
+    else:
+      patient_404(patient_id)
   else:
     wrong_inputs()
 

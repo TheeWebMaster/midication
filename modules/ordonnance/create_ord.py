@@ -1,15 +1,32 @@
 from random import randint
 
 
-def write(string, ord_file):
+def write_tofile(string, ord_file):
   ord_file.write(string + '\n')
 
+def is_patient(patient_id):
+  patient_file = open('files/patient.txt', 'r')
 
-def create_ord(id, firstname, lastname, date, time, medecines, i):
-  with open(f'files/ordonnance/{firstname}_{lastname}_{i}.txt', 'w') as ord_file:
-    headline = f'{id} {firstname} {lastname} {date} {time}'
-    write(headline, ord_file)
+  for patient in patient_file.readlines():
+    if (patient_id == patient.split(';')[0]):
+      return True
+
+  return False
+
+
+def create_ord(patient_id, firstname, lastname, date, time, medecines, i):
+
+  if (is_patient(patient_id)):
+    ord_file = open(f'files/ordonnance/{firstname}_{lastname}_{i}.txt', 'w')
+    headline = f'{patient_id} {firstname} {lastname} {date} {time}'
+
+    write_tofile(headline, ord_file)
 
     for medicine in medecines:
       med = '{} {} {}'.format(medicine['title'], medicine['quantity'], medicine['duration'])
-      write(med, ord_file)
+      write_tofile(med, ord_file)
+
+    ord_file.close()
+    return True
+  else:
+    return False
