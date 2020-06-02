@@ -1,5 +1,10 @@
 def get_rdv_str(rendezvous_infos):
-  return ''.join([info + ';' for info in rendezvous_infos.values()])
+    rdv_details = ''
+  
+    for info in rendezvous_infos.values():
+      rdv_details += f'{info};'
+
+    return rdv_details
 
 
 def add_rendezvous(rendezvous_infos):
