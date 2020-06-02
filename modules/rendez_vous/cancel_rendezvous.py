@@ -1,12 +1,4 @@
-def filter_rdvs(rdvs, patient_id, date, time):
-  filtered = []
-  target = f'{patient_id};{date};{time};'
-
-  for rdv in rdvs:
-    if (target not in rdv):
-      filtered.append(rdv)
-
-  return filtered
+from .filter_rendervous import filter_rdvs
 
 
 def cancel_rendezvous(patient_id, date, time):
