@@ -3,6 +3,7 @@ import modules.rendez_vous as rendezvous
 import modules.ordonnance as ordo
 import modules.historique as history
 import modules.graph as graph
+import modules.input as inp 
 
 def done():
   print('\ndone.')
@@ -60,25 +61,30 @@ def get_medicines():
 
 
 def add_new_patient():
-  patient_id = input('CIN: ')
-  firstname = input('nom: ')
-  lastname = input('prenon: ')
-  sexe = input('sexe: homme/femme: ')
-  age = input('age: ')
+  patient_id = inp.get_patient_id()
+  
+  if patient_id != '0':
+    firstname = inp.get_patient_name('nom')
+    
+    if firstname != '0':
+      lastname = inp.get_patient_name('prenom')
+      
+      if lastname != '0':
+        sexe = inp.get_patient_gender()
+        
+        if sexe != '0':
+          age = inp.get_patient_age()
 
-  if(patient_id.isdigit() and age.isdigit() and firstname.isalpha() and lastname.isalpha() and is_valid_gender(sexe)):
-    new_patient =  {
-      'id': patient_id,
-      'firstname': firstname,
-      'lastname': lastname,
-      'sexe': sexe,
-      'age': age
-    }
-    patient.add_patient(new_patient)
-    done()
-
-  else:
-    wrong_inputs() 
+          if age != '0':
+            new_patient =  {
+              'id': patient_id,
+              'firstname': firstname,
+              'lastname': lastname,
+              'sexe': sexe,
+              'age': age
+            }
+            patient.add_patient(new_patient)
+            done()
 
 
 def delete_patient():
