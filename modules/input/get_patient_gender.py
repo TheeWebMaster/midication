@@ -1,5 +1,5 @@
 def is_valid_gender(gender):
-  return gender == 'homme' or gender == 'femme'
+  return gender.lower() == 'homme' or gender.lower() == 'femme'
 
 def get_patient_gender():
   gender = ''

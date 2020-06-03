@@ -62,7 +62,6 @@ def get_medicines():
 
 
 def add_new_patient():
-  print_patients()
   patient_id = inp.get_patient_id()
   
   if patient_id != '0':
@@ -86,20 +85,17 @@ def add_new_patient():
               'age': age
             }
             patient.add_patient(new_patient)
+            print_patients()
             done()
 
 
 def delete_patient():
-  patient_id = input('donner CIN de patient a supprimer: ')
-  if (patient_id.isdigit()):
-    is_allgood = patient.remove_patient(patient_id)
+  patient_id = inp.get_patient_id_positive()
 
-    if (is_allgood):
-      done()
-    else:
-      patient_404(patient_id)
-  else:
-    print('wrong CIN.')
+  if patient_id != '0':
+    patient.remove_patient(patient_id)
+    print_patients()
+    print(f'le patient avec CIN {patient_id} est suprimer avec succès')
 
 
 def add_rendezvous():

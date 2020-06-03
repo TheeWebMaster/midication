@@ -19,6 +19,7 @@ def print_patients():
   headers = ['N°', 'CIN', 'nom', 'prenom', 'sexe', 'age']
 
   table = construct_table(patients)
+  print('\n---------------tables des patients----------------')
   print(tabulate(table, headers=headers, showindex="always"), '\n')
 
   patient_file.close()

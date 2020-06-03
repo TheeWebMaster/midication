@@ -20,9 +20,5 @@ def remove_patient(patient_id):
     patient_file.seek(0)
 
     patient_file.writelines(filtered)
-    
-    return True
-  else:
-    return False
 
   patient_file.close()
