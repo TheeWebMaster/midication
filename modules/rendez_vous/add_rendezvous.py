@@ -1,3 +1,5 @@
+from modules.helper.is_patient import is_patient
+
 def get_rdv_str(rendezvous_infos):
     rdv_details = ''
   
@@ -5,15 +7,6 @@ def get_rdv_str(rendezvous_infos):
       rdv_details += f'{info};'
 
     return rdv_details
-
-def is_patient(patient_id):
-  patient_file = open('files/patient.txt', 'r')
-
-  for patient in patient_file.readlines():
-    if (patient_id == patient.split(';')[0]):
-      return True
-
-  return False
 
 
 def add_rendezvous(rendezvous_infos):
