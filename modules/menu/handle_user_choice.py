@@ -4,6 +4,7 @@ import modules.ordonnance as ordo
 import modules.historique as history
 import modules.graph as graph
 import modules.input as inp 
+from modules.helper.print_patients import print_patients
 
 def done():
   print('\ndone.')
@@ -61,6 +62,7 @@ def get_medicines():
 
 
 def add_new_patient():
+  print_patients()
   patient_id = inp.get_patient_id()
   
   if patient_id != '0':
