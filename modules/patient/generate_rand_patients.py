@@ -13,7 +13,7 @@ def generate_rand_patients():
   for _ in range(10):
     sexe = get_rand_sexe()
     patient = {
-        'id': randint(5000, 6000),
+        'id': randint(10000000, 99999999),
         'name': names.get_first_name(gender=sexe),
         'surname': names.get_last_name(),
         'sexe': sexe,
