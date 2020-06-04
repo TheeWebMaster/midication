@@ -1,4 +1,4 @@
-from modules.helper.is_existing_rdv import is_existing_rdv
+from modules.rendez_vous.is_existing_rdv import is_existing_rdv
 from modules.rendez_vous.print_rdvs import print_rdvs
 
 

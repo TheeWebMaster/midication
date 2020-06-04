@@ -1,5 +1,4 @@
-from modules.helper.is_patient import is_patient
-from modules.patient.print_patients import print_patients
+from modules.patient import is_patient, print_patients
 
 
 def is_valid_id(patient_id):

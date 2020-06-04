@@ -1,6 +1,3 @@
-from modules.helper.is_patient import is_patient
-
-
 def get_rdv_str(rendezvous_infos):
   rdv_details = ''
 
@@ -11,11 +8,9 @@ def get_rdv_str(rendezvous_infos):
 
 
 def add_rendezvous(rendezvous_infos):
-  patient_id = rendezvous_infos['id']
+  rendervous_file = open('./files/rendezvous.txt', 'a')
 
-  if is_patient(patient_id):
-    rendervous_file = open('./files/rendezvous.txt', 'a')
-    rdv_str = get_rdv_str(rendezvous_infos)
+  rdv_str = get_rdv_str(rendezvous_infos)
+  rendervous_file.write(rdv_str + '\n')
 
-    rendervous_file.write(rdv_str + '\n')
-    rendervous_file.close()
+  rendervous_file.close()
