@@ -74,7 +74,7 @@ def delete_patient():
 
 
 def add_rendezvous():
-  patient_id, date, time = '' * 3
+  patient_id, date, time = '', '', ''
 
   while True:
     patient.print_patients()
