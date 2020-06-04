@@ -6,3 +6,4 @@ from .get_patient_age import get_patient_age
 from .get_date import get_date
 from .get_time import get_time
 from .get_rdv_id_that_exist import get_rdv_id_that_exist
+from .get_medicines import get_medicines

@@ -1,5 +1,5 @@
 from modules.helper.is_existing_rdv import is_existing_rdv
-from modules.helper.print_rdvs import print_rdvs
+from modules.rendez_vous.print_rdvs import print_rdvs
 
 
 def is_valid_id(rdv_id):

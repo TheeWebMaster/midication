@@ -4,21 +4,10 @@ import modules.ordonnance as ordo
 import modules.historique as history
 import modules.graph as graph
 import modules.input as inp
-from modules.helper.print_patients import print_patients
-from modules.helper.print_rdvs import print_rdvs
-from modules.helper.is_registred_rdv import is_registred_rdv
 
 
 def done():
   print('\ndone.')
-
-
-def wrong_inputs():
-  print('\nwrong input(s).')
-
-
-def patient_404(patient_id):
-  print(f'\nthe patient with CIN {patient_id} does not exist in the patient registry')
 
 
 def its_enough(message):
@@ -33,22 +22,6 @@ def there_is_zero(*args):
       return True
 
   return False
-
-
-def get_medicines():
-  med = []
-  num = ''
-  while not num.isdigit():
-    num = input('enter le nombre des medicaments: ')
-
-  for _ in range(0, int(num)):
-    med.append({
-        'title': input('nom du medicament: '),
-        'quantity': input('quantite du medicament: '),
-        'duration': input('duration du medicament: ')
-    })
-
-  return med
 
 
 def add_new_patient():
@@ -78,7 +51,7 @@ def add_new_patient():
                   'age': age
               }
               patient.add_patient(new_patient)
-              print_patients()
+              patient.print_patients()
               print(f'le patient "{lastname} {firstname}" avec le CIN "{patient_id}" est ajouté avec succès.')
 
     zero = there_is_zero(patient_id, firstname, lastname, sexe, age)
@@ -93,7 +66,7 @@ def delete_patient():
 
     if patient_id != '0':
       patient.remove_patient(patient_id)
-      print_patients()
+      patient.print_patients()
       print(f'le patient avec CIN {patient_id} est suprimer avec succès.')
 
     if there_is_zero(patient_id) or its_enough('supprimer un autre patient? o/n '):
@@ -104,7 +77,7 @@ def add_rendezvous():
   patient_id, date, time = '' * 3
 
   while True:
-    print_patients()
+    patient.print_patients()
     patient_id = inp.get_patient_id_that_exists()
 
     if patient_id != '0':
@@ -131,7 +104,7 @@ def cancel_rendezvous():
   rdv_id, date, time = '', '', ''
 
   while True:
-    print_rdvs()
+    rendezvous.print_rdvs()
     rdv_id = inp.get_rdv_id_that_exist()
 
     if rdv_id != '0':
@@ -141,9 +114,9 @@ def cancel_rendezvous():
         time = inp.get_time()
 
         if time != '0':
-          if is_registred_rdv(rdv_id, date, time):
+          if rendezvous.is_registred_rdv(rdv_id, date, time):
             rendezvous.cancel_rendezvous(rdv_id, date, time)
-            print_rdvs()
+            rendezvous.print_rdvs()
             print('canceled rendezvous')
           else:
             print('not found')
@@ -156,7 +129,7 @@ def modify_rendezvoud():
   rdv_id, prev_date, prev_time, date, time = '', '', '', '', ''
 
   while True:
-    print_rdvs()
+    rendezvous.print_rdvs()
     rdv_id = inp.get_rdv_id_that_exist()
 
     if rdv_id != '0':
@@ -165,7 +138,7 @@ def modify_rendezvoud():
       if prev_date != '0':
         prev_time = inp.get_time()
 
-        if is_registred_rdv(rdv_id, prev_date, prev_time):
+        if rendezvous.is_registred_rdv(rdv_id, prev_date, prev_time):
           print('donner le nouveau date: ')
           date = inp.get_date()
 
@@ -180,7 +153,7 @@ def modify_rendezvoud():
                   {'date': prev_date, 'time': prev_time}
               )
 
-              print_rdvs()
+              rendezvous.print_rdvs()
         else:
           print('\ndesired rendezvous to update not found.')
 
@@ -192,7 +165,7 @@ def create_ord():
   rdv_id, date, time = '', '', ''
 
   while True:
-    print_rdvs()
+    rendezvous.print_rdvs()
     rdv_id = inp.get_rdv_id_that_exist()
 
     if rdv_id != '0':
@@ -203,8 +176,8 @@ def create_ord():
 
         if time != '0':
 
-          if is_registred_rdv(rdv_id, date, time):
-            medicines = get_medicines()
+          if rendezvous.is_registred_rdv(rdv_id, date, time):
+            medicines = inp.get_medicines()
             ord_num = ordo.get_ord_num(rdv_id)
 
             ordo.create_ord(rdv_id, date, time, medicines, ord_num)
