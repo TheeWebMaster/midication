@@ -35,34 +35,6 @@ def there_is_zero(*args):
   return False
 
 
-def is_valid_date(date):
-  parts = date.split('/')
-
-  if len(parts) != 3:
-    return False
-  else:
-    if (parts[0].isdigit() and parts[1].isdigit() and parts[2].isdigit()):
-      return True
-    else:
-      return False
-
-
-def is_valid_time(time):
-  parts = time.split(':')
-
-  if len(parts) != 2:
-    return False
-  else:
-    if (parts[0].isdigit() and parts[1].isdigit()):
-      return True
-    else:
-      return False
-
-
-def is_valid_gender(gender):
-  return gender == 'homme' or gender == 'femme'
-
-
 def get_medicines():
   med = []
   num = ''
@@ -169,10 +141,10 @@ def cancel_rendezvous():
         time = inp.get_time()
 
         if time != '0':
-          isfound = rendezvous.cancel_rendezvous(rdv_id, date, time)
-
-          if isfound:
-            print('found')
+          if is_registred_rdv(rdv_id, date, time):
+            rendezvous.cancel_rendezvous(rdv_id, date, time)
+            print_rdvs()
+            print('canceled rendezvous')
           else:
             print('not found')
 
@@ -217,21 +189,31 @@ def modify_rendezvoud():
 
 
 def create_ord():
-  patient_id = input('CIN: ')
-  date = input('date jour/mois/annee: ')
-  time = input('temp hh:min ')
+  rdv_id, date, time = '', '', ''
 
-  medicines = get_medicines()
+  while True:
+    print_rdvs()
+    rdv_id = inp.get_rdv_id_that_exist()
 
-  if patient_id.isdigit() and is_valid_date(date) and is_valid_time(time):
-    is_allgood = ordo.create_ord(patient_id, date, time, medicines, 1)
+    if rdv_id != '0':
+      date = inp.get_date()
 
-    if is_allgood:
-      done()
-    else:
-      print(f'\nno corresponding patient with CIN {patient_id}')
-  else:
-    wrong_inputs()
+      if date != '0':
+        time = inp.get_time()
+
+        if time != '0':
+
+          if is_registred_rdv(rdv_id, date, time):
+            medicines = get_medicines()
+            ord_num = ordo.get_ord_num(rdv_id)
+
+            ordo.create_ord(rdv_id, date, time, medicines, ord_num)
+            print('ordo est crée avec succès. consulter le dossier des ordonnaces.')
+          else:
+            print(f'il y n a aucune rendez vous avec les donnes suivante: {rdv_id} {date} {time}')
+
+    if there_is_zero(rdv_id, date, time) or its_enough('crée une autre ordonnance? o/n: '):
+      break
 
 
 def handle_user_choice(choice):

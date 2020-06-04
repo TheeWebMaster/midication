@@ -13,7 +13,4 @@ def cancel_rendezvous(patient_id, date, time):
 
     rdv_file.writelines(filterd_rdvs)
 
-    return True
-  else:
-    return False
   rdv_file.close()

@@ -35,6 +35,3 @@ def create_ord(patient_id, date, time, medecines, i):
       write_tofile(med, ord_file)
 
     ord_file.close()
-    return True
-  else:
-    return False
