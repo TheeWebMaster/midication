@@ -205,7 +205,8 @@ def handle_user_choice(choice):
       create_ord()
     elif choice == '7':
       history.create_history_files()
-      done()
+      print('les historique des patients sont crée avec succès.')
+      print('cosulter le dossier files/historique/')
     elif choice == '8':
       graph.per_month()
     elif choice == '9':
