@@ -1,5 +1,6 @@
 from tabulate import tabulate
 
+
 def construct_table(patients):
   table = []
 
@@ -11,6 +12,7 @@ def construct_table(patients):
     table.append(patient)
 
   return table
+
 
 def print_patients():
   patient_file = open('files/patient.txt', 'r')
