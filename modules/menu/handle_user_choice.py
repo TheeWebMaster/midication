@@ -88,7 +88,7 @@ def add_new_patient():
             }
             patient.add_patient(new_patient)
             print_patients()
-            done()
+            print(f'le patient "{lastname} {firstname}" avec le CIN "{patient_id}" est ajouté avec succès.')
 
 
 def delete_patient():
@@ -97,7 +97,7 @@ def delete_patient():
   if patient_id != '0':
     patient.remove_patient(patient_id)
     print_patients()
-    print(f'le patient avec CIN {patient_id} est suprimer avec succès')
+    print(f'le patient avec CIN {patient_id} est suprimer avec succès.')
 
 
 def add_rendezvous():
