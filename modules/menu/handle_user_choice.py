@@ -22,7 +22,7 @@ def patient_404(patient_id):
 def is_valid_date(date):
   parts = date.split('/')
 
-  if (len(parts) != 3):
+  if len(parts) != 3:
     return False
   else:
     if (parts[0].isdigit() and parts[1].isdigit() and parts[2].isdigit()):
@@ -34,7 +34,7 @@ def is_valid_date(date):
 def is_valid_time(time):
   parts = time.split(':')
 
-  if (len(parts) != 2):
+  if len(parts) != 2:
     return False
   else:
     if (parts[0].isdigit() and parts[1].isdigit()):
@@ -113,7 +113,7 @@ def add_rendezvous():
     }
     allgood = rendezvous.add_rendezvous(new_rdv)
 
-    if (allgood):
+    if allgood:
       done()
     else:
       patient_404(patient_id)
@@ -129,7 +129,7 @@ def cancel_rendezvous():
   if (patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
     is_allgood = rendezvous.cancel_rendezvous(patient_id, date, time)
 
-    if (is_allgood):
+    if is_allgood:
       done()
     else:
       print(f'\nrendezvous with ID {patient_id} date {date} time {time} already not registered')
@@ -146,14 +146,14 @@ def modify_rendezvoud():
   date = input('donner le nouveau date jour/mois/annee: ')
   time = input('donner le nouveau temp hh:min ')
 
-  if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time) and is_valid_date(prev_date) and is_valid_time(prev_time)):
+  if patient_id.isdigit() and is_valid_date(date) and is_valid_time(time) and is_valid_date(prev_date) and is_valid_time(prev_time):
     is_allgood = rendezvous.modify_rendezvous(
         patient_id,
         {'date': date, 'time': time},
         {'date': prev_date, 'time': prev_time}
     )
 
-    if (is_allgood):
+    if is_allgood:
       done()
     else:
       print('\ndesired rendezvous to update not found.')
@@ -168,10 +168,10 @@ def create_ord():
 
   medicines = get_medicines()
 
-  if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
+  if patient_id.isdigit() and is_valid_date(date) and is_valid_time(time):
     is_allgood = ordo.create_ord(patient_id, date, time, medicines, 1)
 
-    if (is_allgood):
+    if is_allgood:
       done()
     else:
       print(f'\nno corresponding patient with CIN {patient_id}')
@@ -180,25 +180,25 @@ def create_ord():
 
 
 def handle_user_choice(choice):
-  if (choice.isdigit()):
-    if(choice == '1'):
+  if choice.isdigit():
+    if choice == '1':
       add_new_patient()
-    elif(choice == '2'):
+    elif choice == '2':
       delete_patient()
-    elif(choice == '3'):
+    elif choice == '3':
       add_rendezvous()
-    elif(choice == '4'):
+    elif choice == '4':
       cancel_rendezvous()
-    elif(choice == '5'):
+    elif choice == '5':
       modify_rendezvoud()
-    elif(choice == '6'):
+    elif choice == '6':
       create_ord()
-    elif(choice == '7'):
+    elif choice == '7':
       history.create_history_files()
       done()
-    elif(choice == '8'):
+    elif choice == '8':
       graph.per_month()
-    elif(choice == '9'):
+    elif choice == '9':
       graph.per_year()
     else:
       print('wrong choice.')

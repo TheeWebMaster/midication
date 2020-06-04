@@ -3,7 +3,7 @@ def filter_rdvs(rdvs, patient_id, date, time):
   target = f'{patient_id};{date};{time};'
 
   for rdv in rdvs:
-    if (target not in rdv):
+    if target not in rdv:
       filtered.append(rdv)
 
   return filtered

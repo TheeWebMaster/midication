@@ -1,4 +1,5 @@
-import os 
+import os
+
 
 def clear_prev_history_files():
   history_files = os.listdir('files/historique')

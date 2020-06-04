@@ -1,5 +1,5 @@
-from .get_all_dates import get_all_dates
 from matplotlib import pyplot as plt
+from .get_all_dates import get_all_dates
 
 
 def get_years(dates):
@@ -10,17 +10,16 @@ def get_years(dates):
 
   return years
 
+
 def draw(year_mapping):
 
   years = list(year_mapping.keys())
   int_years = [int(year) for year in years]
   int_years.sort()
-  
+
   times = [year_mapping[str(year)] for year in int_years]
 
   plt.plot(int_years, times, label='consultations/année')
-
-
 
   plt.title('nombre des consultations pour chaque année')
   plt.legend()
@@ -32,15 +31,16 @@ def draw(year_mapping):
 
   plt.show()
 
+
 def per_year():
   dates = get_all_dates()
   years = get_years(dates)
 
   year_mapping = {}
   for year in years:
-    if( year not in year_mapping.keys()):
+    if year not in year_mapping.keys():
       year_mapping[year] = 1
     else:
-     year_mapping[year] += 1
+      year_mapping[year] += 1
 
   draw(year_mapping)

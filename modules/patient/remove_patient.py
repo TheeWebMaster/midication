@@ -8,14 +8,13 @@ def filter_patients(patient_id, patients):
   return new_patients
 
 
-
 def remove_patient(patient_id):
   patient_file = open('./files/patient.txt', 'r+')
   patients = patient_file.readlines()
 
   filtered = filter_patients(patient_id, patients)
 
-  if (len(filtered) != len(patients)):
+  if len(filtered) != len(patients):
     patient_file.truncate(0)
     patient_file.seek(0)
 

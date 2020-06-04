@@ -1,6 +1,6 @@
-from .add_patient import add_patient
 from random import randint
 import names
+from .add_patient import add_patient
 
 sexes = ['male', 'female']
 

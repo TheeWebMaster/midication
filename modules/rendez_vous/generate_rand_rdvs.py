@@ -1,5 +1,5 @@
-from .add_rendezvous import add_rendezvous
 from random import randint
+from .add_rendezvous import add_rendezvous
 
 
 def get_rand_date():

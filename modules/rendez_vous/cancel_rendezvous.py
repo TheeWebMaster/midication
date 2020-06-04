@@ -7,12 +7,12 @@ def cancel_rendezvous(patient_id, date, time):
 
   filterd_rdvs = filter_rdvs(rdvs, patient_id, date, time)
 
-  if (len(filterd_rdvs) != len(rdvs)):
+  if len(filterd_rdvs) != len(rdvs):
     rdv_file.truncate(0)
     rdv_file.seek(0)
 
     rdv_file.writelines(filterd_rdvs)
-    
+
     return True
   else:
     return False

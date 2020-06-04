@@ -4,7 +4,7 @@ def is_patient(patient_id):
   patient_file.close()
 
   for patient in patients:
-    if (patient_id == patient.split(';')[0]):
+    if patient_id == patient.split(';')[0]:
       return True
 
   return False

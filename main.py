@@ -23,10 +23,10 @@ print('patients, rendervous, ordonnances, historique data has been generated aut
 print('you can graph data directly or add, remove, update desired data')
 print('please check the files/ folder')
 
-while(True):
+while True:
   menu.show()
   choice = input('please, choose an option: ')
   print('\n')
-  if (choice == '0'):
+  if choice == '0':
     break
   menu.handle_user_choice(choice)

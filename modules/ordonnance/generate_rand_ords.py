@@ -25,7 +25,7 @@ def generate_rand_ords():
     rdv_details = rdv.split(';')
     current_patient_id = rdv_details[0]
 
-    if(prev_patient_id != current_patient_id):
+    if prev_patient_id != current_patient_id:
       index = 1
 
     create_ord(current_patient_id, rdv_details[1], rdv_details[2], get_rand_med(), index)

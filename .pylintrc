@@ -1,4 +1,5 @@
 [MASTER]
+init-hook='import sys; sys.path.append("./")'
 
 # A comma-separated list of package or module names from where C extensions may
 # be loaded. Extensions are loading into the active Python interpreter and may
@@ -314,10 +315,10 @@ indent-after-paren=4
 
 # String used as indentation unit. This is usually "    " (4 spaces) or "\t" (1
 # tab).
-indent-string='    '
+indent-string='  '
 
 # Maximum number of characters on a single line.
-max-line-length=100
+max-line-length=130
 
 # Maximum number of lines in a module.
 max-module-lines=1000
