@@ -19,7 +19,3 @@ def add_rendezvous(rendezvous_infos):
 
     rendervous_file.write(rdv_str + '\n')
     rendervous_file.close()
-
-    return True
-  else:
-    return False

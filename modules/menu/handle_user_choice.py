@@ -127,24 +127,30 @@ def delete_patient():
 
 
 def add_rendezvous():
-  patient_id = input('CIN: ')
-  date = input('date jour/mois/annee: ')
-  time = input('temp hh:min ')
+  patient_id, date, time = '', '', ''
 
-  if(patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
-    new_rdv = {
-        'id': patient_id,
-        'date': date,
-        'time': time
-    }
-    allgood = rendezvous.add_rendezvous(new_rdv)
+  while True:
+    print_patients()
+    patient_id = inp.get_patient_id_that_exists()
 
-    if allgood:
-      done()
-    else:
-      patient_404(patient_id)
-  else:
-    wrong_inputs()
+    if patient_id != '0':
+      date = inp.get_date()
+
+      if date != '0':
+        time = inp.get_time()
+
+        if time != '0':
+          new_rdv = {
+              'id': patient_id,
+              'date': date,
+              'time': time
+          }
+
+          rendezvous.add_rendezvous(new_rdv)
+          print('new rdv has been added.')
+
+    if is_zero(patient_id, date, time) or its_enough('ajouter un autre rendezvous? o/n '):
+      break
 
 
 def cancel_rendezvous():
