@@ -6,10 +6,6 @@ import modules.graph as graph
 import modules.input as inp
 
 
-def done():
-  print('\ndone.')
-
-
 def its_enough(message):
   enough = input(message)
 
