@@ -201,6 +201,6 @@ def handle_user_choice(choice):
     elif choice == '9':
       graph.per_year()
     else:
-      print('wrong choice.')
+      print('choix invalide.')
   else:
-    print('wrong choice.')
+    print('choix invalid.')
