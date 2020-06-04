@@ -5,6 +5,7 @@ import modules.historique as history
 import modules.graph as graph
 import modules.input as inp
 from modules.helper.print_patients import print_patients
+from modules.helper.print_rdvs import print_rdvs
 
 
 def done():
@@ -154,20 +155,28 @@ def add_rendezvous():
 
 
 def cancel_rendezvous():
-  patient_id = input('donner le CIN de rendezvous a annule: ')
-  date = input('donner la date de rendezvous a annule: jour/mois/annee ')
-  time = input('donner l\'heure de rendezvous a annule: hh:min ')
+  rdv_id, date, time = '', '', ''
 
-  if (patient_id.isdigit() and is_valid_date(date) and is_valid_time(time)):
-    is_allgood = rendezvous.cancel_rendezvous(patient_id, date, time)
+  while True:
+    print_rdvs()
+    rdv_id = inp.get_rdv_id_that_exist()
 
-    if is_allgood:
-      done()
-    else:
-      print(f'\nrendezvous with ID {patient_id} date {date} time {time} already not registered')
+    if rdv_id != '0':
+      date = inp.get_date()
 
-  else:
-    print('wrong CIN')
+      if date != '0':
+        time = inp.get_time()
+
+        if time != '0':
+          isfound = rendezvous.cancel_rendezvous(rdv_id, date, time)
+
+          if isfound:
+            print('found')
+          else:
+            print('not found')
+
+    if is_zero(rdv_id, date, time) or its_enough('annuler un autre rendezvous? o/n '):
+      break
 
 
 def modify_rendezvoud():

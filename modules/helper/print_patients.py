@@ -1,17 +1,5 @@
 from tabulate import tabulate
-
-
-def construct_table(patients):
-  table = []
-
-  for patient in patients:
-    patient = patient.strip()
-    patient = patient.split(';')
-    patient.pop(-1)
-
-    table.append(patient)
-
-  return table
+from modules.helper.construct_table import construct_table
 
 
 def print_patients():
