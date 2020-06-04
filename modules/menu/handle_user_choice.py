@@ -6,6 +6,7 @@ import modules.graph as graph
 import modules.input as inp
 from modules.helper.print_patients import print_patients
 from modules.helper.print_rdvs import print_rdvs
+from modules.helper.is_registred_rdv import is_registred_rdv
 
 
 def done():
@@ -26,7 +27,7 @@ def its_enough(message):
   return enough.lower() == 'n'
 
 
-def is_zero(*args):
+def there_is_zero(*args):
   for arg in args:
     if arg == '0':
       return True
@@ -108,7 +109,7 @@ def add_new_patient():
               print_patients()
               print(f'le patient "{lastname} {firstname}" avec le CIN "{patient_id}" est ajouté avec succès.')
 
-    zero = is_zero(patient_id, firstname, lastname, sexe, age)
+    zero = there_is_zero(patient_id, firstname, lastname, sexe, age)
 
     if zero or its_enough('tu veux ajouter un autre patient? o/n '):
       break
@@ -123,12 +124,12 @@ def delete_patient():
       print_patients()
       print(f'le patient avec CIN {patient_id} est suprimer avec succès.')
 
-    if is_zero(patient_id) or its_enough('supprimer un autre patient? o/n '):
+    if there_is_zero(patient_id) or its_enough('supprimer un autre patient? o/n '):
       break
 
 
 def add_rendezvous():
-  patient_id, date, time = '', '', ''
+  patient_id, date, time = '' * 3
 
   while True:
     print_patients()
@@ -150,7 +151,7 @@ def add_rendezvous():
           rendezvous.add_rendezvous(new_rdv)
           print('new rdv has been added.')
 
-    if is_zero(patient_id, date, time) or its_enough('ajouter un autre rendezvous? o/n '):
+    if there_is_zero(patient_id, date, time) or its_enough('ajouter un autre rendezvous? o/n '):
       break
 
 
@@ -175,31 +176,44 @@ def cancel_rendezvous():
           else:
             print('not found')
 
-    if is_zero(rdv_id, date, time) or its_enough('annuler un autre rendezvous? o/n '):
+    if there_is_zero(rdv_id, date, time) or its_enough('annuler un autre rendezvous? o/n '):
       break
 
 
 def modify_rendezvoud():
-  patient_id = input('donner le CIN de rendezvous a modifier: ')
-  prev_date = input('donner la date de rendezvous a annule: jour/mois/annee ')
-  prev_time = input('donner l\'heure de rendezvous a annule: hh:min ')
+  rdv_id, prev_date, prev_time, date, time = '', '', '', '', ''
 
-  date = input('donner le nouveau date jour/mois/annee: ')
-  time = input('donner le nouveau temp hh:min ')
+  while True:
+    print_rdvs()
+    rdv_id = inp.get_rdv_id_that_exist()
 
-  if patient_id.isdigit() and is_valid_date(date) and is_valid_time(time) and is_valid_date(prev_date) and is_valid_time(prev_time):
-    is_allgood = rendezvous.modify_rendezvous(
-        patient_id,
-        {'date': date, 'time': time},
-        {'date': prev_date, 'time': prev_time}
-    )
+    if rdv_id != '0':
+      prev_date = inp.get_date()
 
-    if is_allgood:
-      done()
-    else:
-      print('\ndesired rendezvous to update not found.')
-  else:
-    wrong_inputs()
+      if prev_date != '0':
+        prev_time = inp.get_time()
+
+        if is_registred_rdv(rdv_id, prev_date, prev_time):
+          print('donner le nouveau date: ')
+          date = inp.get_date()
+
+          if date != '0':
+            print('donner le nouveau temp: ')
+            time = inp.get_time()
+
+            if time != '0':
+              rendezvous.modify_rendezvous(
+                  rdv_id,
+                  {'date': date, 'time': time},
+                  {'date': prev_date, 'time': prev_time}
+              )
+
+              print_rdvs()
+        else:
+          print('\ndesired rendezvous to update not found.')
+
+    if there_is_zero(rdv_id, prev_date, prev_time, date, time) or its_enough('modifier un autre rendezvous? o/n '):
+      break
 
 
 def create_ord():

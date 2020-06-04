@@ -25,8 +25,4 @@ def modify_rendezvous(patient_id, new_timing, prev_timing):
 
     rdv_file.writelines(rdvs)
 
-    return True
-  else:
-    return False
-
   rdv_file.close()
