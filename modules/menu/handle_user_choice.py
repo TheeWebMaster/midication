@@ -64,7 +64,7 @@ def get_medicines():
 
 
 def add_new_patient():
-  patient_id = inp.get_patient_id()
+  patient_id = inp.get_patient_id_not_existing()
 
   if patient_id != '0':
     firstname = inp.get_patient_name('nom')
@@ -92,7 +92,7 @@ def add_new_patient():
 
 
 def delete_patient():
-  patient_id = inp.get_patient_id_positive()
+  patient_id = inp.get_patient_id_that_exists()
 
   if patient_id != '0':
     patient.remove_patient(patient_id)

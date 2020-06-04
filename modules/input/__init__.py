@@ -1,5 +1,5 @@
-from .get_patient_id import get_patient_id
-from .get_patient_id_positive import get_patient_id_positive
+from .get_patient_id_not_existing import get_patient_id_not_existing
+from .get_patient_id_that_exists import get_patient_id_that_exists
 from .get_patient_name import get_patient_name
 from .get_patient_gender import get_patient_gender
 from .get_patient_age import get_patient_age

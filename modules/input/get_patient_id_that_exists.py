@@ -6,7 +6,7 @@ def is_valid_id(patient_id):
   return patient_id.isdigit() and len(patient_id) == 8
 
 
-def get_patient_id_positive():
+def get_patient_id_that_exists():
   print_patients()
   patient_id = ''
 
