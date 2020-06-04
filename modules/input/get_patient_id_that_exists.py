@@ -11,12 +11,15 @@ def get_patient_id_that_exists():
   patient_id = ''
 
   while True:
-    print('CIN doit être exactement 8 chiffre. (donner 0 pour quitter)')
+    print('Le CIN doit être exactement 8 chiffre. (donner 0 pour quitter)')
     patient_id = input('CIN: ')
 
-    if not is_patient(patient_id):
-      print(f'le CIN {patient_id} n\'existe pas, svp entrer an nouveau CIN')
-    elif is_valid_id(patient_id) or patient_id == '0':
+    if patient_id == '0':
       break
+    else:
+      if not is_patient(patient_id):
+        print(f'le CIN {patient_id} n\'existe pas dans la table des patients. entrer un nouveau CIN')
+      elif is_valid_id(patient_id):
+        break
 
   return patient_id

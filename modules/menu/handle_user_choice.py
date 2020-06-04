@@ -19,6 +19,20 @@ def patient_404(patient_id):
   print(f'\nthe patient with CIN {patient_id} does not exist in the patient registry')
 
 
+def its_enough(message):
+  enough = input(message)
+
+  return enough.lower() == 'n'
+
+
+def is_zero(*args):
+  for arg in args:
+    if arg == '0':
+      return True
+
+  return False
+
+
 def is_valid_date(date):
   parts = date.split('/')
 
@@ -64,40 +78,52 @@ def get_medicines():
 
 
 def add_new_patient():
-  patient_id = inp.get_patient_id_not_existing()
+  patient_id, firstname, lastname, sexe, age = ('', '', '', '', '')
 
-  if patient_id != '0':
-    firstname = inp.get_patient_name('nom')
+  while True:
+    patient_id = inp.get_patient_id_not_existing()
 
-    if firstname != '0':
-      lastname = inp.get_patient_name('prenom')
+    if patient_id != '0':
+      firstname = inp.get_patient_name('nom')
 
-      if lastname != '0':
-        sexe = inp.get_patient_gender()
+      if firstname != '0':
+        lastname = inp.get_patient_name('prenom')
 
-        if sexe != '0':
-          age = inp.get_patient_age()
+        if lastname != '0':
+          sexe = inp.get_patient_gender()
 
-          if age != '0':
-            new_patient = {
-                'id': patient_id,
-                'firstname': firstname,
-                'lastname': lastname,
-                'sexe': sexe,
-                'age': age
-            }
-            patient.add_patient(new_patient)
-            print_patients()
-            print(f'le patient "{lastname} {firstname}" avec le CIN "{patient_id}" est ajouté avec succès.')
+          if sexe != '0':
+            age = inp.get_patient_age()
+
+            if age != '0':
+              new_patient = {
+                  'id': patient_id,
+                  'firstname': firstname,
+                  'lastname': lastname,
+                  'sexe': sexe,
+                  'age': age
+              }
+              patient.add_patient(new_patient)
+              print_patients()
+              print(f'le patient "{lastname} {firstname}" avec le CIN "{patient_id}" est ajouté avec succès.')
+
+    zero = is_zero(patient_id, firstname, lastname, sexe, age)
+
+    if zero or its_enough('tu veux ajouter un autre patient? o/n '):
+      break
 
 
 def delete_patient():
-  patient_id = inp.get_patient_id_that_exists()
+  while True:
+    patient_id = inp.get_patient_id_that_exists()
 
-  if patient_id != '0':
-    patient.remove_patient(patient_id)
-    print_patients()
-    print(f'le patient avec CIN {patient_id} est suprimer avec succès.')
+    if patient_id != '0':
+      patient.remove_patient(patient_id)
+      print_patients()
+      print(f'le patient avec CIN {patient_id} est suprimer avec succès.')
+
+    if is_zero(patient_id) or its_enough('supprimer un autre patient? o/n '):
+      break
 
 
 def add_rendezvous():
