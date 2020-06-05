@@ -184,7 +184,7 @@ def create_ord():
 
           ordo.create_ord(rdv_id, date, time, medicines, ord_num)
 
-          print(f'\n{Fore.GREEN}ordonnance est crée avec succès.\nconsulter file/ordonnance/', end='')
+          print(f'{Fore.GREEN}ordonnance crée avec succès.\nconsulter file/ordonnance/', end='')
           print(f'{patient_fullname[0]}_{patient_fullname[1]}_{ord_num}.txt{Fore.RESET}')
 
           keep_rdv = its_enough('est ce que tu veux supprimer le rendez vous déjà fait? o/n: ')
