@@ -3,7 +3,7 @@ from modules.rendez_vous import is_registred_rdv, print_rdvs
 from .get_time import is_valid_time
 
 
-def get_time_with_corresponding_id_date(rdv_id, date):
+def get_time_with_corresponding_rdvid_date(rdv_id, date):
   while True:
     print(f'{Fore.YELLOW}le temp doit correspondre avec le CIN {rdv_id} et la date {date}')
     print(f'{Fore.YELLOW}le temp doit être sur la forme suivate:', end='')

@@ -115,7 +115,7 @@ def cancel_rendezvous():
       date = inp.get_date_with_corresponding_rdv_id(rdv_id)
 
       if date != '0':
-        time = inp.get_time_with_corresponding_id_date(rdv_id, date)
+        time = inp.get_time_with_corresponding_rdvid_date(rdv_id, date)
 
         if time != '0':
           rendezvous.cancel_rendezvous(rdv_id, date, time)
@@ -139,7 +139,7 @@ def modify_rendezvoud():
       prev_date = inp.get_date_with_corresponding_rdv_id(rdv_id)
 
       if prev_date != '0':
-        prev_time = inp.get_time_with_corresponding_id_date(rdv_id, prev_date)
+        prev_time = inp.get_time_with_corresponding_rdvid_date(rdv_id, prev_date)
 
         if prev_time != '0':
           print(f'{Fore.YELLOW}donner le nouveau date: {Fore.RESET}')
@@ -175,7 +175,7 @@ def create_ord():
       date = inp.get_date_with_corresponding_rdv_id(rdv_id)
 
       if date != '0':
-        time = inp.get_time_with_corresponding_id_date(rdv_id, date)
+        time = inp.get_time_with_corresponding_rdvid_date(rdv_id, date)
 
         if time != '0':
           medicines = inp.get_medicines()
