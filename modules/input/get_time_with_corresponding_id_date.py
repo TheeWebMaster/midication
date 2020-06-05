@@ -5,6 +5,7 @@ from .get_time import is_valid_time
 
 def get_time_with_corresponding_id_date(rdv_id, date):
   while True:
+    print(f'{Fore.YELLOW}le temp doit correspondre avec le CIN {rdv_id} et la date {date}')
     print(f'{Fore.YELLOW}le temp doit être sur la forme suivate:', end='')
     print(f' heure:minute{Fore.MAGENTA} (donner 0 pour quitter){Fore.RESET}\n')
     time = input('temp: ')

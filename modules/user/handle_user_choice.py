@@ -136,17 +136,17 @@ def modify_rendezvoud():
     rdv_id = inp.get_rdv_id_that_exist()
 
     if rdv_id != '0':
-      prev_date = inp.get_date()
+      prev_date = inp.get_date_with_corresponding_rdv_id(rdv_id)
 
       if prev_date != '0':
-        prev_time = inp.get_time()
+        prev_time = inp.get_time_with_corresponding_id_date(rdv_id, prev_date)
 
-        if rendezvous.is_registred_rdv(rdv_id, prev_date, prev_time):
-          print('donner le nouveau date: ')
+        if prev_time != '0':
+          print(f'{Fore.YELLOW}donner le nouveau date: {Fore.RESET}')
           date = inp.get_date()
 
           if date != '0':
-            print('donner le nouveau temp: ')
+            print(f'{Fore.YELLOW}donner le nouveau temp: {Fore.RESET}')
             time = inp.get_time()
 
             if time != '0':
@@ -157,8 +157,8 @@ def modify_rendezvoud():
               )
 
               rendezvous.print_rdvs()
-        else:
-          print('\ndesired rendezvous to update not found.')
+              print(f'le rendezous avec CIN {rdv_id} est modifier ', end='')
+              print(f'par la date {date} et temp {time}.{Fore.RESET}')
 
     if there_is_zero(rdv_id, prev_date, prev_time, date, time) or its_enough('modifier un autre rendezvous? o/n '):
       break
@@ -172,21 +172,27 @@ def create_ord():
     rdv_id = inp.get_rdv_id_that_exist()
 
     if rdv_id != '0':
-      date = inp.get_date()
+      date = inp.get_date_with_corresponding_rdv_id(rdv_id)
 
       if date != '0':
-        time = inp.get_time()
+        time = inp.get_time_with_corresponding_id_date(rdv_id, date)
 
         if time != '0':
+          medicines = inp.get_medicines()
+          patient_fullname = patient.get_patient_fullname(rdv_id)
+          ord_num = ordo.get_ord_num(patient_fullname)
 
-          if rendezvous.is_registred_rdv(rdv_id, date, time):
-            medicines = inp.get_medicines()
-            ord_num = ordo.get_ord_num(rdv_id)
+          ordo.create_ord(rdv_id, date, time, medicines, ord_num)
 
-            ordo.create_ord(rdv_id, date, time, medicines, ord_num)
-            print('ordo est crée avec succès. consulter le dossier des ordonnaces.')
-          else:
-            print(f'il y n a aucune rendez vous avec les donnes suivante: {rdv_id} {date} {time}')
+          print(f'{Fore.GREEN}ordonnance est crée avec succès.\nconsulter file/ordonnance/', end='')
+          print(f'{patient_fullname[0]}_{patient_fullname[1]}_{ord_num}.txt{Fore.RESET}')
+
+          rendezvous.cancel_rendezvous(rdv_id, date, time)
+          rendezvous.print_rdvs()
+
+          print(f'{Fore.MAGENTA}le rendezvous avec les information suivante')
+          print(f'{rdv_id}, {date}, {time}')
+          print(f'est supprimer dans la table de rendezvous.{Fore.RESET}')
 
     if there_is_zero(rdv_id, date, time) or its_enough('crée une autre ordonnance? o/n: '):
       break
