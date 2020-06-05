@@ -13,11 +13,13 @@ def get_patient_name(title):
     print(f'{Fore.MAGENTA} (donner 0 pour quitter){Fore.RESET}\n')
 
     name = input(f'{title}: ')
-    print('\n')
 
-    if name == '0' or is_valid_name(name):
+    if name == '0':
+      break
+    elif is_valid_name(name):
+      print(f'{Fore.GREEN}Valide ✓{Fore.RESET}\n')
       break
 
-    print(f'{Fore.RED}{title.upper()} INVALIDE!{Fore.RESET}\n')
+    print(f'{Fore.RED}{title.upper()} INVALIDE ✗{Fore.RESET}\n')
 
   return name

@@ -27,7 +27,7 @@ def is_valid_date(date):
 
 def get_date():
   while True:
-    print(F'{Fore.YELLOW}La date doit être sur la forme suivante: jour/mois/année {Fore.MAGENTA}', end='')
+    print(F'{Fore.YELLOW}La date doit être sous la forme suivante: jour/mois/année {Fore.MAGENTA}', end='')
     print(f'(donner 0 pour quitter){Fore.RESET}\n')
 
     date = input('date: ')

@@ -35,6 +35,6 @@ def get_time():
       print(f'{Fore.GREEN}Valide ✓{Fore.RESET}\n')
       break
 
-    print(f'{Fore.RED}DATE INVALIDE ✗{Fore.RESET}\n')
+    print(f'{Fore.RED}TEMP INVALIDE ✗{Fore.RESET}\n')
 
   return time

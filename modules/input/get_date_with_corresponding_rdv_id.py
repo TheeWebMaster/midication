@@ -6,7 +6,7 @@ from .get_date import is_valid_date
 def get_date_with_corresponding_rdv_id(rdv_id):
   while True:
     print(f'{Fore.YELLOW}la date doit correspondre avec le CIN {rdv_id}')
-    print(F'La date doit être sur la forme suivante: jour/mois/année {Fore.MAGENTA}', end='')
+    print(F'La date doit être sous la forme suivante: jour/mois/année {Fore.MAGENTA}', end='')
     print(f'(donner 0 pour quitter){Fore.RESET}\n')
 
     date = input('date: ')

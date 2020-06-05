@@ -79,7 +79,6 @@ def add_rendezvous():
   patient_id, date, time = '', '', ''
 
   while True:
-    patient.print_patients()
     patient_id = inp.get_patient_id_that_exists()
 
     if patient_id != '0':
@@ -98,8 +97,9 @@ def add_rendezvous():
           rendezvous.add_rendezvous(new_rdv)
 
           rendezvous.print_rdvs()
-          print(f'{Fore.GREEN}le renedez avec les information suivate {patient_id} {date} {time}')
-          print(f'est ajoute avec succès dans la table des rendezvous{Fore.RESET}')
+          print(f'{Fore.GREEN}le renedezous avec les informations suivante {patient_id}, {date}, {time}')
+          print('est ajoute avec succès dans la table des rendezvous')
+          print(f'voir le dernier ligne de la table{Fore.RESET}')
 
     if there_is_zero(patient_id, date, time) or its_enough('ajouter un autre rendezvous? o/n '):
       break
@@ -121,7 +121,7 @@ def cancel_rendezvous():
           rendezvous.cancel_rendezvous(rdv_id, date, time)
           rendezvous.print_rdvs()
 
-          print(f'{Fore.GREEN}le renedez avec les information suivate {rdv_id} {date} {time}')
+          print(f'{Fore.GREEN}le renedezous avec les informations suivante {rdv_id}, {date}, {time}')
           print(f'est annulé avec succès dans la table des rendezvous{Fore.RESET}')
 
     if there_is_zero(rdv_id, date, time) or its_enough('annuler un autre rendezvous? o/n '):
@@ -157,7 +157,7 @@ def modify_rendezvoud():
               )
 
               rendezvous.print_rdvs()
-              print(f'le rendezous avec CIN {rdv_id} est modifier ', end='')
+              print(f'{Fore.GREEN}le rendezous avec CIN {rdv_id} est modifier ', end='')
               print(f'par la date {date} et temp {time}.{Fore.RESET}')
 
     if there_is_zero(rdv_id, prev_date, prev_time, date, time) or its_enough('modifier un autre rendezvous? o/n '):
@@ -184,15 +184,18 @@ def create_ord():
 
           ordo.create_ord(rdv_id, date, time, medicines, ord_num)
 
-          print(f'{Fore.GREEN}ordonnance est crée avec succès.\nconsulter file/ordonnance/', end='')
+          print(f'\n{Fore.GREEN}ordonnance est crée avec succès.\nconsulter file/ordonnance/', end='')
           print(f'{patient_fullname[0]}_{patient_fullname[1]}_{ord_num}.txt{Fore.RESET}')
 
-          rendezvous.cancel_rendezvous(rdv_id, date, time)
-          rendezvous.print_rdvs()
+          keep_rdv = its_enough('est ce que tu veux supprimer le rendez vous déjà fait? o/n: ')
 
-          print(f'{Fore.MAGENTA}le rendezvous avec les information suivante')
-          print(f'{rdv_id}, {date}, {time}')
-          print(f'est supprimer dans la table de rendezvous.{Fore.RESET}')
+          if not keep_rdv:
+            rendezvous.cancel_rendezvous(rdv_id, date, time)
+            rendezvous.print_rdvs()
+
+            print(f'{Fore.MAGENTA}le rendezvous avec les information suivante')
+            print(f'{rdv_id}, {date}, {time}')
+            print(f'est supprimer dans la table de rendezvous.{Fore.RESET}')
 
     if there_is_zero(rdv_id, date, time) or its_enough('crée une autre ordonnance? o/n: '):
       break

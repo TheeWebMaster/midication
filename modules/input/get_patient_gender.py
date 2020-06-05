@@ -9,13 +9,15 @@ def get_patient_gender():
   gender = ''
 
   while True:
-    print(f'{Fore.LIGHTYELLOW_EX}le sexe doit être homme/femme. (donner 0 pour quitter){Fore.RESET}\n')
+    print(f'{Fore.LIGHTYELLOW_EX}le sexe doit être homme où femme.{Fore.MAGENTA} (donner 0 pour quitter){Fore.RESET}\n')
     gender = input('sexe: ')
-    print('\n')
 
-    if gender == '0' or is_valid_gender(gender):
+    if gender == '0':
+      break
+    elif is_valid_gender(gender):
+      print(f'{Fore.GREEN}Valide ✓{Fore.RESET}\n')
       break
 
-    print(f'{Fore.RED}SEXE INVALID!{Fore.RESET}\n')
+    print(f'{Fore.RED}SEXE INVALID ✗{Fore.RESET}\n')
 
-  return gender
+  return gender.lower()

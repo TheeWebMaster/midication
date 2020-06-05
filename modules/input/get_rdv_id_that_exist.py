@@ -20,7 +20,7 @@ def get_rdv_id_that_exist():
     else:
       if not is_valid_id(rdv_id):
         print_rdvs()
-        print(f'{Fore.RED}CIN INVALIDE ✗{Fore.RESET}\n')
+        print(f'{Fore.RED}CIN \'{rdv_id}\' INVALIDE ✗{Fore.RESET}\n')
       elif not is_existing_rdv(rdv_id):
         print_rdvs()
         print(f'{Fore.RED}le CIN {rdv_id} n\'existe pas dans la table des rendezvous. Entrer un nouveau CIN\n{Fore.RESET}')

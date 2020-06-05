@@ -20,10 +20,10 @@ def get_patient_id_not_existing():
     else:
       if not is_valid_id(patient_id):
         print_patients()
-        print(f'{Fore.RED}CIN INVALIDE ✗{Fore.RESET}\n')
+        print(f'{Fore.RED}CIN \'{patient_id}\' INVALIDE ✗{Fore.RESET}\n')
       elif is_patient(patient_id):
         print_patients()
-        print(f'{Fore.RED}le CIN {patient_id} existe déjà. Entrer an nouveau CIN{Fore.RESET}\n')
+        print(f'{Fore.RED}le CIN \'{patient_id}\' existe déjà. Entrer an nouveau CIN{Fore.RESET}\n')
       else:
         print(f'{Fore.GREEN}Valide ✓{Fore.RESET}\n')
         break

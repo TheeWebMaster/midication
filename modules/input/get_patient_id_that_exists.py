@@ -20,7 +20,7 @@ def get_patient_id_that_exists():
     else:
       if not is_valid_id(patient_id):
         print_patients()
-        print(f'{Fore.RED}CIN INVALIDE ✗{Fore.RESET}\n')
+        print(f'{Fore.RED}CIN \'{patient_id}\' INVALIDE ✗{Fore.RESET}\n')
       elif not is_patient(patient_id):
         print_patients()
         print(f'{Fore.RED}le CIN {patient_id} n\'existe pas dans la table des patients. entrer un nouveau CIN{Fore.RESET}\n')
