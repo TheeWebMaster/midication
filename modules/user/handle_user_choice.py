@@ -7,7 +7,10 @@ import modules.input as inp
 
 
 def its_enough(message):
-  enough = input(message)
+  enough = ''
+
+  while enough.lower() != 'o' and enough.lower() != 'n':
+    enough = input(message)
 
   return enough.lower() == 'n'
 
