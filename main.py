@@ -2,7 +2,7 @@ import modules.patient as patient
 import modules.rendez_vous as rendezvous
 import modules.ordonnance as ordo
 import modules.historique as historique
-import modules.menu as menu
+import modules.user as user
 
 patient.create_patient_file()
 patient.generate_rand_patients()
@@ -24,9 +24,9 @@ print('you can graph data directly or add, remove, update desired data')
 print('please check the files/ folder')
 
 while True:
-  menu.show()
+  user.show_menu()
   choice = input('please, choose an option: ')
   print('\n')
   if choice == '0':
     break
-  menu.handle_user_choice(choice)
+  user.handle_user_choice(choice)
