@@ -1,3 +1,4 @@
+from colorama import Fore
 from modules.patient import is_patient, print_patients
 
 
@@ -10,12 +11,21 @@ def get_patient_id_not_existing():
   patient_id = ''
 
   while True:
-    print('CIN doit être exactement 8 chiffre. (donner 0 pour quitter)')
+    print(f'{Fore.LIGHTYELLOW_EX}le CIN ne devrait pas exister dans la table des patients.')
+    print(F'de plus doit être exactement 8 chiffre.{Fore.MAGENTA} (donner 0 pour quitter){Fore.RESET}\n')
     patient_id = input('CIN: ')
 
-    if is_patient(patient_id):
-      print(f'le CIN {patient_id} existe déjà, svp entrer an nouveau CIN')
-    elif is_valid_id(patient_id) or patient_id == '0':
+    if patient_id == '0':
       break
+    else:
+      if not is_valid_id(patient_id):
+        print_patients()
+        print(f'{Fore.RED}CIN INVALIDE ✗{Fore.RESET}\n')
+      elif is_patient(patient_id):
+        print_patients()
+        print(f'{Fore.RED}le CIN {patient_id} existe déjà. Entrer an nouveau CIN{Fore.RESET}\n')
+      else:
+        print(f'{Fore.GREEN}Valide ✓{Fore.RESET}\n')
+        break
 
   return patient_id

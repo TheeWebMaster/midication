@@ -1,4 +1,5 @@
 from tabulate import tabulate
+from colorama import Fore
 from modules.helper.construct_table import construct_table
 
 
@@ -10,6 +11,6 @@ def print_patients():
 
   table = construct_table(patients)
   print('\n---------------tables des patients----------------')
-  print(tabulate(table, headers=headers, showindex="always"), '\n')
+  print(f'{Fore.WHITE}{tabulate(table, headers=headers, showindex="always")}{Fore.RESET}', '\n')
 
   patient_file.close()

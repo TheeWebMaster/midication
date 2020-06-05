@@ -1,3 +1,4 @@
+from colorama import Fore
 import modules.patient as patient
 import modules.rendez_vous as rendezvous
 import modules.ordonnance as ordo
@@ -10,7 +11,7 @@ def its_enough(message):
   enough = ''
 
   while enough.lower() != 'o' and enough.lower() != 'n':
-    enough = input(message)
+    enough = input(f'\n{Fore.BLUE}{message}{Fore.RESET}')
 
   return enough.lower() == 'n'
 
@@ -51,7 +52,9 @@ def add_new_patient():
               }
               patient.add_patient(new_patient)
               patient.print_patients()
-              print(f'le patient "{lastname} {firstname}" avec le CIN "{patient_id}" est ajouté avec succès.')
+
+              print(f'{Fore.GREEN}le patient "{lastname} {firstname}" ', end='')
+              print(f'avec le CIN "{patient_id}" est ajouté avec succès.{Fore.RESET}')
 
     zero = there_is_zero(patient_id, firstname, lastname, sexe, age)
 
@@ -66,7 +69,7 @@ def delete_patient():
     if patient_id != '0':
       patient.remove_patient(patient_id)
       patient.print_patients()
-      print(f'le patient avec CIN {patient_id} est suprimer avec succès.')
+      print(f'{Fore.GREEN}le patient avec CIN {patient_id} est suprimer avec succès.{Fore.RESET}')
 
     if there_is_zero(patient_id) or its_enough('supprimer un autre patient? o/n '):
       break
@@ -93,7 +96,10 @@ def add_rendezvous():
           }
 
           rendezvous.add_rendezvous(new_rdv)
-          print('new rdv has been added.')
+
+          rendezvous.print_rdvs()
+          print(f'{Fore.GREEN}le renedez avec les information suivate {patient_id} {date} {time}')
+          print(f'est ajoute avec succès dans la table des rendezvous{Fore.RESET}')
 
     if there_is_zero(patient_id, date, time) or its_enough('ajouter un autre rendezvous? o/n '):
       break
@@ -103,22 +109,20 @@ def cancel_rendezvous():
   rdv_id, date, time = '', '', ''
 
   while True:
-    rendezvous.print_rdvs()
     rdv_id = inp.get_rdv_id_that_exist()
 
     if rdv_id != '0':
-      date = inp.get_date()
+      date = inp.get_date_with_corresponding_rdv_id(rdv_id)
 
       if date != '0':
-        time = inp.get_time()
+        time = inp.get_time_with_corresponding_id_date(rdv_id, date)
 
         if time != '0':
-          if rendezvous.is_registred_rdv(rdv_id, date, time):
-            rendezvous.cancel_rendezvous(rdv_id, date, time)
-            rendezvous.print_rdvs()
-            print('canceled rendezvous')
-          else:
-            print('not found')
+          rendezvous.cancel_rendezvous(rdv_id, date, time)
+          rendezvous.print_rdvs()
+
+          print(f'{Fore.GREEN}le renedez avec les information suivate {rdv_id} {date} {time}')
+          print(f'est annulé avec succès dans la table des rendezvous{Fore.RESET}')
 
     if there_is_zero(rdv_id, date, time) or its_enough('annuler un autre rendezvous? o/n '):
       break

@@ -1,3 +1,6 @@
+from colorama import Fore
+
+
 def all_digits(*args):
   for arg in args:
     if not arg.isdigit():
@@ -7,7 +10,7 @@ def all_digits(*args):
 
 
 def in_range(day, month, year):
-  return 1 <= int(day) <= 31 and 1 <= int(month) <= 12 and int(year) >= 1400
+  return 1 <= int(day) <= 31 and 1 <= int(month) <= 12 and 1800 <= int(year) <= 2020
 
 
 def is_valid_date(date):
@@ -24,11 +27,18 @@ def is_valid_date(date):
 
 def get_date():
   while True:
-    date = input('date jour/mois/année: (donner 0 pour quitter) ')
+    print(F'{Fore.YELLOW}La date doit être sur la forme suivante: jour/mois/année {Fore.MAGENTA}', end='')
+    print(f'(donner 0 pour quitter){Fore.RESET}\n')
 
-    if date == '0' or is_valid_date(date):
+    date = input('date: ')
+
+    if date == '0':
       break
     else:
-      print('DATE INVALIDE')
+      if is_valid_date(date):
+        print(f'{Fore.GREEN}Valide  ✓{Fore.RESET}\n')
+        break
+      else:
+        print(f'{Fore.RED}DATE INVALIDE ✗{Fore.RESET}\n')
 
   return date

@@ -6,3 +6,4 @@ from .generate_rand_rdvs import generate_rand_rdvs
 from .print_rdvs import print_rdvs
 from .is_registred_rdv import is_registred_rdv
 from .is_existing_rdv import is_existing_rdv
+from .is_matched_rdvid_date import is_matched_rdvid_date

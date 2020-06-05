@@ -7,3 +7,5 @@ from .get_date import get_date
 from .get_time import get_time
 from .get_rdv_id_that_exist import get_rdv_id_that_exist
 from .get_medicines import get_medicines
+from .get_date_with_corresponding_rdv_id import get_date_with_corresponding_rdv_id
+from .get_time_with_corresponding_id_date import get_time_with_corresponding_id_date

@@ -1,3 +1,4 @@
+from colorama import Fore
 from modules.rendez_vous import is_existing_rdv, print_rdvs
 
 
@@ -10,15 +11,21 @@ def get_rdv_id_that_exist():
   rdv_id = ''
 
   while True:
-    print('Le CIN de rendezvous doit être exactement 8 chiffre. (donner 0 pour quitter)')
+    print(f'{Fore.YELLOW}le CIN doit être existant dans la table des rendezous.')
+    print(F'de plus doit être exactement 8 chiffre.{Fore.MAGENTA} (donner 0 pour quitter){Fore.RESET}\n')
     rdv_id = input('CIN: ')
 
     if rdv_id == '0':
       break
     else:
-      if not is_existing_rdv(rdv_id):
-        print(f'le CIN {rdv_id} n\'existe pas dans la table des rendezvous. entrer un nouveau CIN')
-      elif is_valid_id(rdv_id):
+      if not is_valid_id(rdv_id):
+        print_rdvs()
+        print(f'{Fore.RED}CIN INVALIDE ✗{Fore.RESET}\n')
+      elif not is_existing_rdv(rdv_id):
+        print_rdvs()
+        print(f'{Fore.RED}le CIN {rdv_id} n\'existe pas dans la table des rendezvous. Entrer un nouveau CIN\n{Fore.RESET}')
+      else:
+        print(f'{Fore.GREEN}Valide ✓{Fore.RESET}\n')
         break
 
   return rdv_id
