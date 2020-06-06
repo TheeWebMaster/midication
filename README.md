@@ -1,4 +1,4 @@
-This project requires two packages `matplotlib`, `names` and `tabulate'.
+This project requires two packages `matplotlib`, `names` and `tabulate`.
 
 - _FIRST:_ to make sure that everything is set up correctly please run `pip install matplotlib names tabulate`.
 
